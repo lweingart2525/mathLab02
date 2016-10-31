@@ -17,32 +17,65 @@ public class MathLab02st
 		int den = Integer.parseInt(strNbr2);
 
 		Rational r = new Rational(num,den);
-		JOptionPane.showMessageDialog(null,r.getNum()+"/"+r.getDen()+" equals "+r.getDecimal());
-          
+		JOptionPane.showMessageDialog(null,r.getNum()+"/"+r.getDen()+" equals "+r.getDecimal(num, den));
+        JOptionPane.showMessageDialog(null,r.getNum()+"/"+r.getDen()+" equals "+r.getNum()/r.getGCF(num, den)+"/"+r.getDen()/r.getGCF(num, den)); 
 		System.exit(0);
 	}
 }
 
+
 				
 
 class Rational
-{
+{ 
+	int num,den, oDen,oNum;
 		
 //	Rational
-	
+	public Rational (int n, int d)
+	{
+		num=n;
+		den=d;
+		
+	}
 //	getNum
-	
+	public int getNum()
+	{
+		return num;
+	}
 //	getDen
+	public int getDen()
+	{
+		return den;
+	}
 
 //	getDecimal
-
+public double getDecimal(double n, double d)
+{
+	return  n/d; 
+}
 //	getRational 
-	
+	public int getRational(int num2, int den2)
+	{
+		return num/den; 
+	}
 //	getOriginal
+	
+	public String getOriginal()
+	{    
+		 return oNum + "/" +  oDen;
+		
+	}
 
 //	reduce
-
-	private int getGCF(int n1,int n2)
+	
+	public void reduce()
+	{
+		int gcf=getGCF(oNum,oDen);
+		num = oNum/gcf;
+		den = oDen/gcf;
+	}
+	
+	int getGCF(int n1,int n2)
 	{
 		int rem = 0;
 		int gcf = 0;
@@ -60,6 +93,8 @@ class Rational
 		while (rem != 0);
 		return gcf;
 	} 
+{
+	}
 }
 
 
